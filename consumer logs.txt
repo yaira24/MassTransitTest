@@ -1,0 +1,78 @@
+
+[14:24:04 DBG] Disconnect: admin@cluster(:):5672/
+[14:24:04 DBG] Disconnected: admin@cluster(:):5672/
+[14:24:04 DBG] Consumer Model Shutdown: rabbitmq://cluster/EnrollFace - amq.ctag-qLQuuwUoy9QeCI7sL2B1LQ, Concurrent Peak: 0, 320-CONNECTION_FORCED - broker forced connection closure with reason 'shutdown'
+[14:24:04 DBG] Endpoint Completed: rabbitmq://cluster/EnrollFace
+[14:24:04 DBG] Consumer Model Shutdown: rabbitmq://cluster/VerifyFace - amq.ctag-WOd7SRtVBhLzb4E0MLdM1Q, Concurrent Peak: 0, 320-CONNECTION_FORCED - broker forced connection closure with reason 'shutdown'
+[14:24:04 DBG] Endpoint Completed: rabbitmq://cluster/VerifyFace
+[14:24:04 DBG] Consumer Completed: rabbitmq://cluster/VerifyFace: 0 received, 0 concurrent, amq.ctag-WOd7SRtVBhLzb4E0MLdM1Q
+[14:24:04 DBG] Consumer Completed: rabbitmq://cluster/EnrollFace: 0 received, 0 concurrent, amq.ctag-qLQuuwUoy9QeCI7sL2B1LQ
+[14:24:05 DBG] Connect: admin@cluster(rabbitmq-01:):5672/
+[14:24:05 DBG] Returning next host: rabbitmq-02:5672
+[14:24:05 DBG] Connected: admin@cluster(rabbitmq-01:):5672/ (address: amqp://rabbitmq-02:5672, local: 44204)
+[14:24:05 ERR] Declare queue faulted: name: EnrollFace, durable
+RabbitMQ.Client.Exceptions.OperationInterruptedException: The AMQP operation was interrupted: AMQP close-reason, initiated by Peer, code=404, text='NOT_FOUND - home node 'rabbit@rabbitmq-01' of durable queue 'EnrollFace' in vhost '/' is down or inaccessible', classId=50, methodId=10
+   at RabbitMQ.Client.Impl.SimpleBlockingRpcContinuation.GetReply(TimeSpan timeout)
+   at RabbitMQ.Client.Impl.ModelBase.QueueDeclare(String queue, Boolean passive, Boolean durable, Boolean exclusive, Boolean autoDelete, IDictionary`2 arguments)
+   at RabbitMQ.Client.Impl.ModelBase.QueueDeclare(String queue, Boolean durable, Boolean exclusive, Boolean autoDelete, IDictionary`2 arguments)
+   at MassTransit.RabbitMqTransport.RabbitMqModelContext.<>c__DisplayClass19_0.<MassTransit.RabbitMqTransport.ModelContext.QueueDeclare>b__0() in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/RabbitMqModelContext.cs:line 115
+   at MassTransit.Util.ChannelExecutor.SynchronousFuture`1.Run() in /_/src/MassTransit/Util/ChannelExecutor.cs:line 277
+--- End of stack trace from previous location ---
+   at MassTransit.Util.ChannelExecutor.Run[T](Func`1 method, CancellationToken cancellationToken) in /_/src/MassTransit/Util/ChannelExecutor.cs:line 143
+   at MassTransit.RabbitMqTransport.RabbitMqModelContext.RunRpc[T](Func`1 callback, CancellationToken cancellationToken) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/RabbitMqModelContext.cs:line 234
+   at MassTransit.RabbitMqTransport.Middleware.ConfigureRabbitMqTopologyFilter`1.Declare(ModelContext context, Queue queue) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/Middleware/ConfigureRabbitMqTopologyFilter.cs:line 67
+[14:24:05 ERR] Declare queue faulted: name: VerifyFace, durable
+RabbitMQ.Client.Exceptions.OperationInterruptedException: The AMQP operation was interrupted: AMQP close-reason, initiated by Peer, code=404, text='NOT_FOUND - home node 'rabbit@rabbitmq-01' of durable queue 'VerifyFace' in vhost '/' is down or inaccessible', classId=50, methodId=10
+   at RabbitMQ.Client.Impl.SimpleBlockingRpcContinuation.GetReply(TimeSpan timeout)
+   at RabbitMQ.Client.Impl.ModelBase.QueueDeclare(String queue, Boolean passive, Boolean durable, Boolean exclusive, Boolean autoDelete, IDictionary`2 arguments)
+   at RabbitMQ.Client.Impl.ModelBase.QueueDeclare(String queue, Boolean durable, Boolean exclusive, Boolean autoDelete, IDictionary`2 arguments)
+   at MassTransit.RabbitMqTransport.RabbitMqModelContext.<>c__DisplayClass19_0.<MassTransit.RabbitMqTransport.ModelContext.QueueDeclare>b__0() in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/RabbitMqModelContext.cs:line 115
+   at MassTransit.Util.ChannelExecutor.SynchronousFuture`1.Run() in /_/src/MassTransit/Util/ChannelExecutor.cs:line 277
+--- End of stack trace from previous location ---
+   at MassTransit.Util.ChannelExecutor.Run[T](Func`1 method, CancellationToken cancellationToken) in /_/src/MassTransit/Util/ChannelExecutor.cs:line 143
+   at MassTransit.RabbitMqTransport.RabbitMqModelContext.RunRpc[T](Func`1 callback, CancellationToken cancellationToken) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/RabbitMqModelContext.cs:line 234
+   at MassTransit.RabbitMqTransport.Middleware.ConfigureRabbitMqTopologyFilter`1.Declare(ModelContext context, Queue queue) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/Middleware/ConfigureRabbitMqTopologyFilter.cs:line 67
+[14:24:05 DBG] Endpoint Faulted: rabbitmq://cluster/VerifyFace
+MassTransit.RabbitMqConnectionException: ReceiveTransport faulted: admin@cluster(rabbitmq-02:):5672/
+ ---> RabbitMQ.Client.Exceptions.OperationInterruptedException: The AMQP operation was interrupted: AMQP close-reason, initiated by Peer, code=404, text='NOT_FOUND - home node 'rabbit@rabbitmq-01' of durable queue 'VerifyFace' in vhost '/' is down or inaccessible', classId=50, methodId=10
+   at RabbitMQ.Client.Impl.SimpleBlockingRpcContinuation.GetReply(TimeSpan timeout)
+   at RabbitMQ.Client.Impl.ModelBase.QueueDeclare(String queue, Boolean passive, Boolean durable, Boolean exclusive, Boolean autoDelete, IDictionary`2 arguments)
+   at RabbitMQ.Client.Impl.ModelBase.QueueDeclare(String queue, Boolean durable, Boolean exclusive, Boolean autoDelete, IDictionary`2 arguments)
+   at MassTransit.RabbitMqTransport.RabbitMqModelContext.<>c__DisplayClass19_0.<MassTransit.RabbitMqTransport.ModelContext.QueueDeclare>b__0() in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/RabbitMqModelContext.cs:line 115
+   at MassTransit.Util.ChannelExecutor.SynchronousFuture`1.Run() in /_/src/MassTransit/Util/ChannelExecutor.cs:line 277
+--- End of stack trace from previous location ---
+   at MassTransit.Util.ChannelExecutor.Run[T](Func`1 method, CancellationToken cancellationToken) in /_/src/MassTransit/Util/ChannelExecutor.cs:line 143
+   at MassTransit.RabbitMqTransport.RabbitMqModelContext.RunRpc[T](Func`1 callback, CancellationToken cancellationToken) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/RabbitMqModelContext.cs:line 234
+   at MassTransit.RabbitMqTransport.Middleware.ConfigureRabbitMqTopologyFilter`1.Declare(ModelContext context, Queue queue) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/Middleware/ConfigureRabbitMqTopologyFilter.cs:line 67
+   at MassTransit.RabbitMqTransport.Middleware.ConfigureRabbitMqTopologyFilter`1.ConfigureTopology(ModelContext context) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/Middleware/ConfigureRabbitMqTopologyFilter.cs:line 47
+   at MassTransit.RabbitMqTransport.Middleware.ConfigureRabbitMqTopologyFilter`1.<>c__DisplayClass3_0.<<MassTransit-IFilter<MassTransit-RabbitMqTransport-ModelContext>-Send>b__0>d.MoveNext() in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/Middleware/ConfigureRabbitMqTopologyFilter.cs:line 30
+--- End of stack trace from previous location ---
+   at MassTransit.PipeExtensions.OneTimeSetup[T](PipeContext context, Func`2 setupMethod, PayloadFactory`1 payloadFactory) in /_/src/MassTransit.Abstractions/Middleware/PipeExtensions.cs:line 106
+   at MassTransit.RabbitMqTransport.Middleware.ConfigureRabbitMqTopologyFilter`1.MassTransit.IFilter<MassTransit.RabbitMqTransport.ModelContext>.Send(ModelContext context, IPipe`1 next) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/Middleware/ConfigureRabbitMqTopologyFilter.cs:line 28
+   at MassTransit.Agents.PipeContextSupervisor`1.Send(IPipe`1 pipe, CancellationToken cancellationToken) in /_/src/MassTransit/Agents/PipeContextSupervisor.cs:line 55
+   at MassTransit.Agents.PipeContextSupervisor`1.Send(IPipe`1 pipe, CancellationToken cancellationToken) in /_/src/MassTransit/Agents/PipeContextSupervisor.cs:line 61
+   at MassTransit.Agents.PipeContextSupervisor`1.Send(IPipe`1 pipe, CancellationToken cancellationToken) in /_/src/MassTransit/Agents/PipeContextSupervisor.cs:line 67
+   at MassTransit.Transports.ReceiveTransport`1.ReceiveTransportAgent.RunTransport() in /_/src/MassTransit/Transports/ReceiveTransport.cs:line 188
+   --- End of inner exception stack trace ---
+[14:24:05 DBG] Endpoint Faulted: rabbitmq://cluster/EnrollFace
+MassTransit.RabbitMqConnectionException: ReceiveTransport faulted: admin@cluster(rabbitmq-02:):5672/
+ ---> RabbitMQ.Client.Exceptions.OperationInterruptedException: The AMQP operation was interrupted: AMQP close-reason, initiated by Peer, code=404, text='NOT_FOUND - home node 'rabbit@rabbitmq-01' of durable queue 'EnrollFace' in vhost '/' is down or inaccessible', classId=50, methodId=10
+   at RabbitMQ.Client.Impl.SimpleBlockingRpcContinuation.GetReply(TimeSpan timeout)
+   at RabbitMQ.Client.Impl.ModelBase.QueueDeclare(String queue, Boolean passive, Boolean durable, Boolean exclusive, Boolean autoDelete, IDictionary`2 arguments)
+   at RabbitMQ.Client.Impl.ModelBase.QueueDeclare(String queue, Boolean durable, Boolean exclusive, Boolean autoDelete, IDictionary`2 arguments)
+   at MassTransit.RabbitMqTransport.RabbitMqModelContext.<>c__DisplayClass19_0.<MassTransit.RabbitMqTransport.ModelContext.QueueDeclare>b__0() in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/RabbitMqModelContext.cs:line 115
+   at MassTransit.Util.ChannelExecutor.SynchronousFuture`1.Run() in /_/src/MassTransit/Util/ChannelExecutor.cs:line 277
+--- End of stack trace from previous location ---
+   at MassTransit.Util.ChannelExecutor.Run[T](Func`1 method, CancellationToken cancellationToken) in /_/src/MassTransit/Util/ChannelExecutor.cs:line 143
+   at MassTransit.RabbitMqTransport.RabbitMqModelContext.RunRpc[T](Func`1 callback, CancellationToken cancellationToken) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/RabbitMqModelContext.cs:line 234
+   at MassTransit.RabbitMqTransport.Middleware.ConfigureRabbitMqTopologyFilter`1.Declare(ModelContext context, Queue queue) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/Middleware/ConfigureRabbitMqTopologyFilter.cs:line 67
+   at MassTransit.RabbitMqTransport.Middleware.ConfigureRabbitMqTopologyFilter`1.ConfigureTopology(ModelContext context) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/Middleware/ConfigureRabbitMqTopologyFilter.cs:line 47
+   at MassTransit.RabbitMqTransport.Middleware.ConfigureRabbitMqTopologyFilter`1.<>c__DisplayClass3_0.<<MassTransit-IFilter<MassTransit-RabbitMqTransport-ModelContext>-Send>b__0>d.MoveNext() in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/Middleware/ConfigureRabbitMqTopologyFilter.cs:line 30
+--- End of stack trace from previous location ---
+   at MassTransit.PipeExtensions.OneTimeSetup[T](PipeContext context, Func`2 setupMethod, PayloadFactory`1 payloadFactory) in /_/src/MassTransit.Abstractions/Middleware/PipeExtensions.cs:line 106
+   at MassTransit.RabbitMqTransport.Middleware.ConfigureRabbitMqTopologyFilter`1.MassTransit.IFilter<MassTransit.RabbitMqTransport.ModelContext>.Send(ModelContext context, IPipe`1 next) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/Middleware/ConfigureRabbitMqTopologyFilter.cs:line 28
+   at MassTransit.Agents.PipeContextSupervisor`1.Send(IPipe`1 pipe, CancellationToken cancellationToken) in /_/src/MassTransit/Agents/PipeContextSupervisor.cs:line 55
+   at MassTransit.Agents.PipeContextSupervisor`1.Send(IPipe`1 pipe, CancellationToken cancellationToken) in /_/src/MassTransit/Agents/PipeContextSupervisor.cs:line 61
+   at MassTransit.Agents.PipeContextSupervisor`1.Send(IPipe`1 pipe, CancellationToken cancellationToken) in /_/src/MassTransit/Agents/PipeContextSupervisor.cs:line 67
+   at MassTransit.Transports.ReceiveTransport`1.ReceiveTransportAgent.RunTransport() in /_/src/MassTransit/Transports/ReceiveTransport.cs:line 188 
+
